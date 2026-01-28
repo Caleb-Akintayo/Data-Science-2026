@@ -1,0 +1,63 @@
+data <- read.csv("https://goo.gl/j6lRXD")
+chisq.test(data$treatment, data$improvement, correct=FALSE)
+save.image("C:\\Users\\cakintayo\\Documents\\Exam 2")
+q()
+install.packages("rpart")
+library(rpart)
+kyphosis <- kyphosis
+kyphosis
+fit <- rpart(Kyphosis ~ Age + Number + Start, method="class",data=kyphosis)
+fit
+plotcp(fit)
+plotcp(fit)
+plot(fit, main="Classification plot for Kyphosis", uniform=TRUE)
+text(fit, use.n=TRUE, all=TRUE, cex=.8)
+plot(fit, main="Classification plot for Kyphosis", uniform=TRUE)
+text(fit, use.n=TRUE, all=TRUE, cex=.8)
+q()
+install.packages("caret",dependencies = TRUE)
+q()
+library(caret)
+set.seed(123)
+data(iris)
+train_index <- createDataPartition(iris$Species, p = 0.8, list = FALSE)
+train_data  <- iris[train_index, ]
+valid_data  <- iris[-train_index, ]
+ctrl <- trainControl(method = "cv", number = 5)
+svm_model <- train(
+  Species ~ .,
+  data = train_data,
+  method = "svmRadial",
+  trControl = ctrl
+)
+print(svm_model)
+svm_preds <- predict(svm_model, newdata = valid_data)
+print(confusionMatrix(svm_preds, valid_data$Species))
+save.image("C:\\Users\\cakintayo\\Documents\\Final")
+q()
+#Caleb Akintayo January 21, 2026, Correlation Test
+if(!require(devtools)) install.packages("devtools") devtools::install_github("kassambara/ggpubr")
+library("ggpubr")
+my_data <- mtcars 
+head(my_data, 6)
+ggscatter(my_data, x = "mpg", y = "wt", add = "reg.line", conf.int = TRUE, cor.coef = TRUE, cor.method = "pearson", xlab = "Miles/(US) gallon", ylab = "Weight (1000 lbs)")
+res <- cor.test(my_data$wt, my_data$mpg, method = "pearson") 
+res
+save.image("C:\\Users\\cakintayo\\Downloads\\Correlation Test")
+q()
+install.packages("ggpubr")
+library(ggpubr)
+Dataset <- read.csv("02-10-2020_1930.csv")
+Dataset <- read.csv("02-10-2020_1930.csv")
+View(Dataset)
+plot( x= Dataset$Confirmed , y = Dataset$Deaths)
+plot(
+  Dataset$Confirmed,
+  Dataset$Deaths,
+  col = "red",
+  pch = 19,
+  xlab = "Confirmed Cases",
+  ylab = "Deaths",
+  main = "COVID-19 Confirmed Cases vs Deaths"
+)
+cor(Dataset$Confirmed , Dataset$Deaths)
